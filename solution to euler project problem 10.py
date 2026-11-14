@@ -71,6 +71,27 @@
 #            sum_of_primes += i
 #    return sum_of_primes
 
+def solution(n: int = 2000000) -> int:
+    """Return the sum of all prime numbers strictly below n."""
+
+    sieve = [True] * n
+
+    sieve[0] = False
+
+    if n > 1:
+        sieve[1] = False
+
+    for p in range(2, int(n ** 0.5) + 1):
+        if sieve[p]:
+            for multiple in range(p * p, n, p):
+                sieve[multiple] = False
+
+    return sum(
+        number
+        for number, is_prime in enumerate(sieve)
+        if is_prime
+    )
+
 
 # if __name__ == "__main__":
 #    # import doctest

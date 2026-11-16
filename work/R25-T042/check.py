@@ -63,7 +63,7 @@ Actual test output:
 {output}
 """
 
-EVIDENCE_FILE.write_text(evidence)
+EVIDENCE_FILE.write_text(evidence.rstrip() + "\n")
 print(f"Evidence saved to: {EVIDENCE_FILE}")
 
 sys.exit(result.returncode)

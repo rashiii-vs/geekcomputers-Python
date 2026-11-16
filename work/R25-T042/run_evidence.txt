@@ -24,3 +24,4 @@ work/R25-T042/test_contract.py::test_click_first_point_on_empty_polyline PASSED 
 work/R25-T042/test_contract.py::test_click_appends_to_existing_polyline PASSED [100%]
 
 ============================== 2 passed in 0.02s ===============================
+

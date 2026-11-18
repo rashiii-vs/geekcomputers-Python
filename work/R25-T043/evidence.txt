@@ -1,0 +1,61 @@
+R25-T043 - DECIMAL TO HEX REGRESSION TEST EVIDENCE
+
+SOURCE
+File: dec_to_hex.py
+Line 1: Reads decimal input as a string.
+Line 2: Converts input to int, then hex, and prints the result.
+
+TEST ENVIRONMENT
+Python: 3.12.16
+Pytest: 9.2.0
+Operating system: macOS
+
+TEST COMMAND
+python3 work/R25-T043/check.py
+
+TEST SUMMARY
+Pytest collected: 1 test function
+Input cases checked: 24
+Passed: 1
+Failed: 0
+Runner exit code: 0
+
+INPUT / EXPECTED OUTPUT / ACTUAL OUTPUT
+
+0     | 0x0   | 0x0
+1     | 0x1   | 0x1
+2     | 0x2   | 0x2
+3     | 0x3   | 0x3
+4     | 0x4   | 0x4
+5     | 0x5   | 0x5
+6     | 0x6   | 0x6
+7     | 0x7   | 0x7
+8     | 0x8   | 0x8
+9     | 0x9   | 0x9
+10    | 0xa   | 0xa
+11    | 0xb   | 0xb
+12    | 0xc   | 0xc
+13    | 0xd   | 0xd
+14    | 0xe   | 0xe
+15    | 0xf   | 0xf
+16    | 0x10  | 0x10
+17    | 0x11  | 0x11
+18    | 0x12  | 0x12
+19    | 0x13  | 0x13
+-1    | -0x1  | -0x1
+-2    | -0x2  | -0x2
+-10   | -0xa  | -0xa
+42    | 0x2a  | 0x2a
+
+REFERENCE METHOD
+The independent reference converts integers to hexadecimal
+using repeated division by 16 and remainder lookup.
+It does not call Python's hex() function.
+
+OUTPUT CONTRACT
+The script prints exactly one string for each valid input.
+The original input string remains unchanged in dec_num.
+
+RESULT
+All 24 input cases matched their explicit expected outputs.
+No implementation changes were required.

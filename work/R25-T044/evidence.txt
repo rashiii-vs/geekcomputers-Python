@@ -1,0 +1,56 @@
+R25-T044 - TEXT TRANSLATOR INVARIANT TEST EVIDENCE
+
+SOURCE
+File: personal_translator.py
+
+Function:
+text_translator(Text)
+
+SOURCE CONTRACT
+Line 17: Function accepts one input parameter.
+Line 18: Creates a Translator instance.
+Line 19: Calls translate with destination "en".
+Line 20: Returns translated.text.
+Line 33: Demonstrates English input "I am fine" remaining constant.
+
+TESTS
+File: work/R25-T044/test_personal_translator.py
+
+1. Smallest example:
+Input: "a"
+Expected: "a"
+Actual: "a"
+
+2. Ordinary example:
+Input: "I am fine"
+Expected: "I am fine"
+Actual: "I am fine"
+
+3. Generated cases:
+Count: 100
+Seed: 44044
+Words: 12 fixed English words
+Phrase length: 1 to 5 words
+Expected: Each input string unchanged
+Actual: All 100 assertions passed.
+
+NOTE
+Expected and actual outputs above are produced using a mocked
+translator. These tests verify the function interface and return
+behaviour, not real translation accuracy.
+
+TEST ENVIRONMENT
+Operating system: macOS
+System Python: 3.9.6
+Project Python: 3.12.16
+pytest: 9.2.0
+pluggy: 1.7.0
+
+ACTUAL CHECK COMMAND
+python3 work/R25-T044/check.py
+
+RESULT
+Collected: 3 tests
+Passed: 3
+Failed: 0
+Runtime: 0.04 seconds

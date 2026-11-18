@@ -1,0 +1,77 @@
+
+TASK: R25-T045
+PROGRAM: ping_subnet.py
+
+TEST ENVIRONMENT
+Python: 3.12.16
+pytest: 9.2.0
+Operating system: macOS
+
+TEST COMMANDS
+1. .venv/bin/python -m pytest -v work/R25-T045/test_ping_subnet.py
+2. python3 work/R25-T045/check.py
+
+Both commands completed successfully.
+
+MOCKED EXTERNAL DEPENDENCY
+The ping function was injected as fake_ping.
+No real network requests were made.
+
+Mock behaviour:
+- Address ending in .2 returns 0 (success).
+- All other addresses return 1 (failure).
+
+TEST 1: SMALLEST PREFIX
+Input: 0.0.0
+Expected:
+- 253 ping calls.
+- 0.0.0.2 is alive.
+- Addresses .3 through .254 did not respond.
+Actual:
+- 253 ping calls.
+- Output matched expected output.
+Result: PASSED
+
+TEST 2: ORDINARY PREFIX
+Input: 192.168.1
+Expected:
+- 253 ping calls.
+- 192.168.1.2 is alive.
+- Addresses .3 through .254 did not respond.
+Actual:
+- 253 ping calls.
+- Output matched expected output.
+Result: PASSED
+
+TEST 3: REPEATABILITY AND INPUT ISOLATION
+Sequence:
+1. Run 192.168.1.
+2. Run 192.168.1 again in a separate directory.
+3. Run 10.0.0.
+4. Run 192.168.1 again in a separate directory.
+
+Expected:
+- Identical input produces identical output.
+- Running another subnet does not contaminate later results.
+Actual:
+- All three 192.168.1 results matched.
+- The other subnet did not affect the results.
+Result: PASSED
+
+TEST 4: INJECTED PING DEPENDENCY
+Verified:
+- 253 calls were made.
+- shell=True was passed.
+- stderr=subprocess.STDOUT was passed.
+- stdout was connected to the log file.
+Result: PASSED
+
+FINAL TEST RESULTS
+Total tests: 4
+Passed: 4
+Failed: 0
+
+Direct pytest run: 4 passed in 0.03 seconds.
+Required checker run: 4 passed in 0.02 seconds.
+
+No real network requests were made.

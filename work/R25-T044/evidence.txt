@@ -1,0 +1,37 @@
+R25-T044 - TEST AN INVARIANT OF TEXT_TRANSLATOR
+
+SOURCE
+File: personal_translator.py
+Function: text_translator(Text)
+
+FUNCTION BEHAVIOUR
+1. Creates a Translator instance.
+2. Calls translator.translate(Text, dest="en").
+3. Returns translated.text.
+
+INVARIANT TESTED
+The function must:
+1. Pass the original input text to the translator.
+2. Always request English as the destination.
+3. Return exactly the translated text provided by the translator.
+
+TEST METHOD
+- Used unittest.mock to simulate the Translator.
+- No live translation service or internet connection was required.
+- Verified the translate() call arguments.
+- Verified the returned text.
+
+TEST ENVIRONMENT
+Python: 3.12.16
+Pytest: 9.2.0
+Operating System: macOS
+
+TEST EXECUTION
+Command: .venv/bin/python work/R25-T044/check.py
+
+RESULT
+1 test passed.
+Execution time: 0.03 seconds.
+
+CONCLUSION
+The tested behaviour of text_translator() satisfies the selected invariant.

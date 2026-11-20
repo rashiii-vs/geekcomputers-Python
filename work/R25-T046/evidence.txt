@@ -1,0 +1,48 @@
+Task: R25-T046
+Target: string_rotation.py
+
+REFRACTOR SUMMARY
+Extracted the repeated one-position left rotation into
+a helper function named _rotate_left_once().
+The original rotation algorithm and public rotate(n)
+function behavior are preserved.
+
+TEST CASES
+
+1. Empty string
+Input: ""
+Expected output: []
+Actual output: []
+Expected return: None
+Actual return: None
+
+2. Ordinary string
+Input: "Tie"
+Expected output: ['ieT', 'eTi', 'Tie']
+Actual output: ['ieT', 'eTi', 'Tie']
+Expected return: None
+Actual return: None
+
+3. Helper function
+Input: ["T", "i", "e"]
+Expected output: ["i", "e", "T"]
+Actual output: ["i", "e", "T"]
+Original input list remains unchanged.
+
+TEST EXECUTION
+Command: python3 work/R25-T046/check.py
+Result: 3 passed
+
+ENVIRONMENT
+Python: 3.12.16
+pytest: 9.2.0
+Git: 2.50.1 (Apple Git-155)
+OS: macOS 26.3
+Build: 25D125
+
+SOURCE REFERENCE
+https://github.com/geekcomputers/Python/blob/70aea8e64bfce4bb59c639a10830b95c940d35f/string_rotation.py#L7
+
+EXTERNAL I/O
+The module-level input() call was mocked during test import.
+No external network access was used.

@@ -1,0 +1,45 @@
+Task: R25-T048
+Target: Secret message generator GUI by tkinter.py
+Function: show1
+
+1. Function behaviour
+- Reads input using name1.get().
+- Encodes letters using the codes dictionary.
+- Updates name1 and result1 after successful conversion.
+- Unsupported characters raise KeyError at the dictionary lookup.
+
+2. Test cases
+
+Test 1: Empty input
+Input: ""
+Expected result: "SECRET MESSAGE IS:-\n"
+Expected return: None
+Expected input state: ""
+
+Test 2: Unsupported character
+Input: "!"
+Expected exception: KeyError
+Expected exception argument: "!"
+Expected input state after failure: "!"
+Expected result state after failure: "previous result"
+
+Recovery test
+Input: "Hi"
+Expected result: "SECRET MESSAGE IS:-\nGh"
+Expected return: None
+Expected input state: ""
+
+3. Test execution
+Command: python3 work/R25-T048/check.py
+Actual result: 2 passed
+
+4. Dependencies
+- Python 3.12.16
+- pytest 9.2.0
+- tkinter is mocked to prevent opening a GUI.
+- No external network or file I/O is performed by the tests.
+
+5. Source references
+- show1 reads input using name1.get().
+- The codes[x] lookup raises KeyError for unsupported characters.
+- name1 and result1 are updated only after successful conversion.

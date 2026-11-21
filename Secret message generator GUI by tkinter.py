@@ -57,7 +57,15 @@ t2.place(x=10, y=220)
 
 
 def show1():
+    """Encode letters and spaces using the codes dictionary.
+
+    Unsupported characters raise KeyError during dictionary lookup.
+    Input and result fields are updated only after successful conversion.
+    """
+
     data1 = name1.get()
+
+
     codes = {
         "b": "a",
         "c": "b",

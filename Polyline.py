@@ -6,6 +6,10 @@ polyline = []
 
 
 def click(pos):
+    """Append pos to polyline, including when the list is empty.
+
+    The supplied position is stored as-is; this function returns None.
+    """
     global polyline
     polyline.append(pos)
 

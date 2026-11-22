@@ -49,8 +49,7 @@ Feel free to explore the scripts and use them for your learning and automation n
 23. [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) - List available serial ports in use on Linux and Windows systems.
 24. [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - Get more views for YouTube videos and repeat songs on YouTube.
 25. [CountMillionCharacter.py](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacter.py) and [CountMillionCharacter2.0](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacters-2.0.py) - Get character count of a text file.
-26. [xkcd_downloader.py](https://github.com/geekcomputers/Python/blob/master/xkcd_downloader.py) - Download the latest XKCD comic and place them in a new folder called "comics".
-27. [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - An alternative to Python's 'timeit' module and easier to use.
+26. [xkcd_downloader.py](https://github.com/geekcomputers/Python/blob/master/xkcd_downloader.py) - Download the latest XKCD comic and place them in a new folder called "comics"xx27. [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - An alternative to Python's 'timeit' module and easier to use.
 28. [calculator.py](https://github.com/geekcomputers/Python/blob/master/calculator.py) - Implement a calculator using Python's eval() function.
 29. [Google_News.py](https://github.com/geekcomputers/Python/blob/master/Google_News.py) - Use BeautifulSoup to provide latest news headlines along with news links.
 30. [cricket_live_score](https://github.com/geekcomputers/Python/blob/master/Cricket_score.py) - Use BeautifulSoup to provide live cricket scores.
@@ -67,6 +66,6 @@ Feel free to explore the scripts and use them for your learning and automation n
 41. [Extract Thumbnail From Video](https://github.com/geekcomputers/Python/tree/ExtractThumbnailFromVideo) - Extract Thumbnail from video files
 42. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
 43. [smart_file_organizer.py](https://github.com/sangampaudel530/Python2.0/blob/main/smart_file_organizer.py) - Organizes files in a directory into categorized subfolders based on file type (Images, Documents, Videos, Audios, Archives, Scripts, Others). You can run it once or automatically at set intervals using the `--path` and `--interval` options.
+44. [friday.py](https://github.com/geekcomputers/Python/blob/master/friday.py) - Check whether a command contains both a Notepad reference and an open or run action. Includes worked examples and tests for matching and non-matching inputs. 
 <hr>
-
 _**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation.

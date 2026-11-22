@@ -1,0 +1,35 @@
+Task: R25-T047
+File tested: friday.py
+
+Regression test results:
+
+1. Input: runnotepad
+   Expected: True
+   Actual: True
+   Result: PASS
+
+2. Input: please run Notepad
+   Expected: True
+   Actual: True
+   Result: PASS
+
+3. Input: open calculator
+   Expected: False
+   Actual: False
+   Result: PASS
+
+4. Input: Notepad
+   Expected: False
+   Actual: False
+   Result: PASS
+
+Regression checks: 4 passed, 0 failed.
+Doctest checks: 9 passed, 0 failed.
+Environment:
+Operating system: macOS
+Python version: 3.12.16
+Test command: python -m doctest -v friday.py
+Regression command: python work/R25-T047/check.py
+Dependency:
+pyttsx3 version: 2.99
+Installation: project virtual environment (.venv)

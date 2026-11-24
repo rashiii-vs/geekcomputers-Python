@@ -3,6 +3,12 @@
 # input: "Tie"
 # Output: ["ieT", "eTi"]
 
+def _rotate_left_once(characters):
+    return [
+        characters[(index + 1) % len(characters)]
+        for index in range(len(characters))
+    ]
+
 
 def rotate(n):
     a = list(n)
@@ -10,7 +16,7 @@ def rotate(n):
         return print([])
     l = []
     for i in range(1, len(a) + 1):
-        a = [a[(i + 1) % (len(a))] for i in range(0, len(a))]
+        a = _rotate_left_once(a)
         l += ["".join(a)]
     print(l)
 

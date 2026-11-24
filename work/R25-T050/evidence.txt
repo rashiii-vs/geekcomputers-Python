@@ -1,0 +1,65 @@
+# R25-T050 — Mutation-Resistant Regression Tests
+
+## Target
+
+File: `multiple_comditions.py`
+
+Function: `check_condition(user)`
+
+## Original source preconditions
+
+- Original lines 3–5: input is converted to an integer and input 1 selects the first branch.
+- Original lines 3, 6–7: input 2 selects the second branch.
+- Original lines 3, 8–9: input 3 selects the third branch.
+- Original lines 3, 10–11: other integer inputs select the range-warning branch.
+
+The original program reads integer input and prints a message. It does not return a value or mutate an input collection.
+
+## Test inputs and independently calculated expected outputs
+
+1. Smallest valid input: `1`
+   - Expected output: `in first if`
+   - Reason: the first condition is true.
+
+2. Ordinary valid input: `2`
+   - Expected output: `in second if`
+   - Reason: the first condition is false and the second condition is true.
+
+## Mutation experiment
+
+Original condition:
+
+`elif user == 2:`
+
+Temporary mutant:
+
+`elif user == 3:`
+
+The mutant incorrectly changes the second choice's condition.
+
+Results:
+- Original implementation: 2 passed.
+- Mutated implementation: 1 passed, 1 failed.
+- The ordinary-input assertion failed because input 2 no longer selected the second branch.
+- The correct implementation was restored after the experiment.
+
+## Final validation
+
+Command:
+
+`python3 work/R25-T050/check.py`
+
+Result: 2 passed.
+
+The checker runs only `test_multiple_conditions.py` and propagates pytest's exit status.
+
+## Environment
+
+Python: 3.12.16
+pytest: 9.2.0
+Platform: macOS
+
+## Protected behavior
+
+The regression tests protect the mapping between valid integer choices and their printed messages. The deliberate mutant demonstrates that the ordinary-input test detects an incorrect branch condition.
+The deliberate mutant demonstrates that the ordinary-input test detects an incorrect branch condition.

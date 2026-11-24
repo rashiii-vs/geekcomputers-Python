@@ -1,0 +1,35 @@
+Implementation test results
+Date: 2026-11-14
+
+Tool versions:
+Python: 3.12.16
+Pytest: 9.2.0
+Git: 2.50.1 (Apple Git-155)
+
+Command:
+python3 work/R25-T041/check.py
+
+Result:
+3 passed in 0.02s
+
+Test cases:
+1. Input: 1
+   Expected: 0
+   Actual: 0
+
+2. Input: 10
+   Expected: 17
+   Actual: 17
+
+3. Input: 2
+   Expected: 0
+   Actual: 0
+
+Additional verification:
+1. Input: 1000
+   Expected: 76127
+   Actual: 76127
+
+2. Input: 2000000
+   Expected: 142913828922
+   Actual: 142913828922

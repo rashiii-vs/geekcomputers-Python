@@ -1,0 +1,22 @@
+Baseline test run
+Date: 2026-11-14
+Python: 3.12.16
+Pytest: 9.2.0
+Command: python3 work/R25-T041/check.py
+
+Result:
+3 failed in 0.03s
+
+Failures:
+- test_smallest_positive_input
+- test_ordinary_input
+- test_prime_boundary
+
+Error:
+AttributeError: module 'problem10' has no attribute 'solution'
+
+Conclusion:
+The target module imports successfully, but solution() is unavailable.
+The implementation is commented out.
+The expected outputs were independently established before editing
+the implementation.

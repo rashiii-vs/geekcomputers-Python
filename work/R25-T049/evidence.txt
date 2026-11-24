@@ -1,0 +1,76 @@
+SOURCE PRECONDITION
+
+Original committed totaldigits.py:
+Line 3: N = int(input("Enter The number"))
+This establishes that the original script accepts integer input.
+Line 4: count = len(str(N))
+This establishes the original digit-counting operation.
+
+Tests were written before changing the implementation.
+Task: R25-T049
+Module: totaldigits.py
+Python version: 3.12.16
+Pytest version: 9.2.0
+
+CORRECTNESS TESTS
+
+Input: 0
+Expected: 1
+Actual: 1
+
+Input: 12345
+Expected: 5
+Actual: 5
+
+Input: -123
+Expected: 3
+Actual: 3
+
+Input: 7
+Expected: 1
+Actual: 1
+
+Input: 123456789012345
+Expected: 15
+Actual: 15
+
+Official checker:
+5 passed
+
+INTERACTIVE CHECK
+
+Input: -123
+Expected output: 3
+Actual output: 3
+
+PERFORMANCE MEASUREMENTS
+
+Timer: time.perf_counter_ns()
+Repetitions: 5 per input size
+Calls per repetition: 1000
+Correctness checks: performed before timing
+Input preparation: excluded from timed interval
+
+Input size: 10 decimal digits
+Median: 52.88 ns/call
+Range: 51.96 - 54.88 ns/call
+
+Input size: 100 decimal digits
+Median: 164.38 ns/call
+Range: 162.75 - 168.79 ns/call
+
+Input size: 1000 decimal digits
+Median: 6988.83 ns/call
+Range: 6929.17 - 8029.71 ns/call
+
+COMPLEXITY
+
+Let d represent the number of decimal digits in the integer.
+
+len() takes O(1) time after the string has been created.
+Converting an integer to a decimal string is implementation-dependent
+and may take superlinear time.
+The temporary decimal string requires O(d) space.
+
+The measurements are observations from Python 3.12.16, not
+a proof of worst-case complexity.

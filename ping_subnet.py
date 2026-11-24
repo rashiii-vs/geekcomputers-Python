@@ -1,59 +1,73 @@
 from __future__ import print_function
 
-import os  # Load the Library Module
-import subprocess  # Load the Library Module
-import sys  # Load the Library Module
+import os
+import subprocess
+import sys
 
-# Script Name		: ping_subnet.py
-# Author				: Craig Richards
-# Created				: 12th January 2012
-# Last Modified		:
-# Version				: 1.0
-# Modifications		:
-# Description			: After supplying the first 3 octets it will scan the final range for available addresses
 
-filename = sys.argv[0]  # Sets a variable for the script name
+def ping_subnet(subnet, ping_function=None):
+    """Scan a subnet using an injectable ping function."""
 
-if (
-    "-h" in sys.argv or "--h" in sys.argv or "-help" in sys.argv or "--help" in sys.argv
-):  # Help Menu if called
-    print(
-        """
-You need to supply the first octets of the address Usage : """
-        + filename
-        + """ 111.111.111 """
-    )
-    sys.exit(0)
-else:
+    if ping_function is None:
+        ping_function = subprocess.call
+
+    if os.name == "posix":
+        myping = "ping -c 2 "
+    elif os.name in ("nt", "dos", "ce"):
+        myping = "ping -n 2 "
+    else:
+        raise OSError("Unsupported operating system")
+
+    filename = "ping_" + subnet + ".log"
+
+    with open(filename, "w") as log_file:
+        for ip in range(2, 255):
+            command = myping + subnet + "." + str(ip)
+
+            ret = ping_function(
+                command,
+                shell=True,
+                stdout=log_file,
+                stderr=subprocess.STDOUT,
+            )
+
+            if ret == 0:
+                log_file.write(subnet + "." + str(ip) + " is alive\n")
+            else:
+                log_file.write(
+                    subnet + "." + str(ip) + " did not respond\n"
+                )
+
+
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
+
+    filename = argv[0]
+
     if (
-        len(sys.argv) < 2
-    ):  # If no arguments are passed then display the help and instructions on how to run the script
+        "-h" in argv
+        or "--h" in argv
+        or "-help" in argv
+        or "--help" in argv
+    ):
+        print(
+            "\nYou need to supply the first octets of the address Usage : "
+            + filename
+            + " 111.111.111 "
+        )
+        return
+
+    if len(argv) < 2:
         sys.exit(
             " You need to supply the first octets of the address Usage : "
             + filename
             + " 111.111.111"
         )
 
-    subnet = sys.argv[1]  # Set the variable subnet as the three octets you pass it
+    subnet = argv[1]
+    ping_subnet(subnet)
 
-    if os.name == "posix":  # Check the os, if it's linux then
-        myping = "ping -c 2 "  # This is the ping command
-    elif os.name in ("nt", "dos", "ce"):  # Check the os, if it's windows then
-        myping = "ping -n 2 "  # This is the ping command
 
-    f = open("ping_" + subnet + ".log", "w")  # Open a logfile
-    for ip in range(2, 255):  # Set the ip variable for the range of numbers
-        ret = subprocess.call(
-            myping + str(subnet) + "." + str(ip),
-            shell=True,
-            stdout=f,
-            stderr=subprocess.STDOUT,
-        )  # Run the command pinging the servers
-        if ret == 0:  # Depending on the response
-            f.write(
-                subnet + "." + str(ip) + " is alive" + "\n"
-            )  # Write out that you can receive a reponse
-        else:
-            f.write(
-                subnet + "." + str(ip) + " did not respond" + "\n"
-            )  # Write out you can't reach the box
+if __name__ == "__main__":
+    main()
